@@ -7,6 +7,11 @@ public final class Mister extends Gossip
   
   private String message;
 
+  public Mister(String name)
+  {
+    super(name);
+  }
+
   @Override
   boolean hasMessage()
   {

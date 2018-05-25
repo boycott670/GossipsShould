@@ -9,6 +9,11 @@ public final class Doctor extends Gossip
   private final List<String> messages = new ArrayList<>();
   private int currentMesesageToSayIndex = 0;
   
+  public Doctor(String name)
+  {
+    super(name);
+  }
+
   @Override
   boolean hasMessage()
   {

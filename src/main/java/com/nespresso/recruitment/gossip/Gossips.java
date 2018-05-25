@@ -3,6 +3,8 @@ package com.nespresso.recruitment.gossip;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import com.nespresso.recruitment.gossip.gossips.Gossip;
 import com.nespresso.recruitment.gossip.parsers.DefaultGossipsParser;
@@ -32,7 +34,9 @@ public final class Gossips
     
     parser.setGossips(gossips);
     
-    this.gossips = parser.parseGossips();
+    this.gossips = parser.parseGossips()
+        .stream()
+        .collect(Collectors.toMap(Gossip::getName, Function.identity()));
     
     sequenceOfGossips = new ArrayList<>();
   }

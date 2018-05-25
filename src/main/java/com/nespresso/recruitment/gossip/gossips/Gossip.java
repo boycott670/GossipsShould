@@ -2,10 +2,22 @@ package com.nespresso.recruitment.gossip.gossips;
 
 public abstract class Gossip
 {
+  private final String name;
+  
   Gossip forthGossip;
   
   Gossip backGossip;
   
+  Gossip(String name)
+  {
+    this.name = name;
+  }
+
+  public final String getName()
+  {
+    return name;
+  }
+
   public final void setForthGossip(final Gossip gossip)
   {
     forthGossip = gossip;
@@ -54,5 +66,11 @@ public abstract class Gossip
     }
     
     return false;
+  }
+
+  @Override
+  public final boolean equals(Object obj)
+  {
+    return super.equals(obj);
   }
 }
