@@ -3,7 +3,7 @@ package com.nespresso.recruitment.gossip.gossips;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Doctor extends Gossip
+public class Doctor extends Gossip
 {
 
   private final List<String> messages = new ArrayList<>();
@@ -21,27 +21,40 @@ public final class Doctor extends Gossip
   }
 
   @Override
-  String message()
+  final String message()
   {
     return messages.get(currentMesesageToSayIndex++);
   }
 
   @Override
-  public void say(String message)
+  public final void say(String message)
   {
     messages.add(message);
   }
 
   @Override
-  public String ask()
+  public final String ask()
   {
     return String.join(", ", messages);
   }
 
   @Override
-  boolean continueSpreading()
+  final boolean continueSpreading()
   {
     return currentMesesageToSayIndex < messages.size() - 1;
+  }
+
+  @Override
+  final Gossip targetGossip()
+  {
+    return super.targetGossip();
+  }
+
+  @Override
+  final void reset()
+  {
+    messages.clear();
+    currentMesesageToSayIndex = 0;
   }
 
 }

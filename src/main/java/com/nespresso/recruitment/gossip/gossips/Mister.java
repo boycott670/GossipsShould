@@ -39,5 +39,11 @@ public final class Mister extends Gossip
   {
     return Optional.ofNullable(message).orElse("");
   }
+
+  @Override
+  void reset()
+  {
+    message = null;
+  }
   
 }

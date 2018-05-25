@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import com.nespresso.recruitment.gossip.gossips.Agent;
 import com.nespresso.recruitment.gossip.gossips.Doctor;
 import com.nespresso.recruitment.gossip.gossips.Gossip;
 import com.nespresso.recruitment.gossip.gossips.Mister;
@@ -21,6 +22,7 @@ public final class DefaultGossipsParser implements GossipsParser
     {
       put("Mr", Mister::new);
       put("Dr", Doctor::new);
+      put("Agent", Agent::new);
     }
   };
   

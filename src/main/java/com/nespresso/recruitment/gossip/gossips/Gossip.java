@@ -47,6 +47,13 @@ public abstract class Gossip
     return false;
   }
   
+  abstract void reset();
+  
+  void prespread()
+  {
+    
+  }
+  
   public abstract void say(final String message);
   
   public abstract String ask();
@@ -58,6 +65,8 @@ public abstract class Gossip
   
   public final boolean spread()
   {
+    prespread();
+    
     if (hasMessage())
     {
       targetGossip().say(message());
@@ -72,5 +81,11 @@ public abstract class Gossip
   public final boolean equals(Object obj)
   {
     return super.equals(obj);
+  }
+
+  @Override
+  public final int hashCode()
+  {
+    return super.hashCode();
   }
 }

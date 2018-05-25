@@ -94,4 +94,55 @@ public class GossipsShould
     assertThat(gossips.ask("Pink")).isEqualTo("ByeBye");
 
   }
+
+  @Test
+  public void alwaysBeListenedByAnAgent()
+  {
+
+    Gossips gossips = new Gossips("Mr White", "Mr Grey", "Agent Pink", "Mr Blue").from("White")
+        .to("Pink")
+        .from("Grey")
+        .to("Pink")
+        .from("Pink")
+        .to("Blue");
+
+    gossips.say("Hello")
+        .to("White");
+    gossips.say("Shade")
+        .to("Grey");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Blue")).isEqualTo("");
+    assertThat(gossips.ask("Blue")).isEqualTo("");
+    assertThat(gossips.ask("Pink")).isEqualTo("Hello, Shade");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("");
+    assertThat(gossips.ask("Blue")).isEqualTo("");
+  }
+
+  @Test
+  public void beStoppedByAnAgent()
+  {
+
+    Gossips gossips = new Gossips("Mr White", "Agent Pink", "Mr Blue").from("White")
+        .to("Pink")
+        .from("Pink")
+        .to("Blue");
+
+    gossips.say("Hello")
+        .to("White");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("Hello");
+    assertThat(gossips.ask("Blue")).isEqualTo("");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("");
+    assertThat(gossips.ask("Blue")).isEqualTo("");
+  }
 }
