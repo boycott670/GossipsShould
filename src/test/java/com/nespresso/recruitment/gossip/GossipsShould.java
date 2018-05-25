@@ -217,4 +217,36 @@ public class GossipsShould
     assertThat(gossips.ask("Pink")).isEqualTo("");
 
   }
+
+  @Test
+  public void beReturnedAndInvertedByGentlemen()
+  {
+
+    Gossips gossips = new Gossips("Mr White", "Sir Rose", "Mr Black").from("White")
+        .to("Rose")
+        .from("Rose")
+        .to("Black");
+
+    gossips.say("Hello")
+        .to("White");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("White")).isEqualTo("");
+    assertThat(gossips.ask("Rose")).isEqualTo("Hello");
+    assertThat(gossips.ask("Black")).isEqualTo("");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("White")).isEqualTo("olleH");
+    assertThat(gossips.ask("Rose")).isEqualTo("");
+    assertThat(gossips.ask("Black")).isEqualTo("");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("White")).isEqualTo("");
+    assertThat(gossips.ask("Rose")).isEqualTo("olleH");
+    assertThat(gossips.ask("Black")).isEqualTo("");
+  }
+
 }

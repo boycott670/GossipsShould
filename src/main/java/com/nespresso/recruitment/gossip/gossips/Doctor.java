@@ -63,4 +63,10 @@ public class Doctor extends Gossip
     return super.isTargetAlwaysListening();
   }
 
+  @Override
+  final String transformMessage(String message)
+  {
+    return super.transformMessage(message);
+  }
+
 }

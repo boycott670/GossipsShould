@@ -32,6 +32,11 @@ public abstract class Gossip
   
   abstract String message();
   
+  String transformMessage(final String message)
+  {
+    return message;
+  }
+  
   Gossip targetGossip()
   {
     return forthGossip;
@@ -69,7 +74,7 @@ public abstract class Gossip
     
     if (hasMessage())
     {
-      targetGossip().say(message());
+      targetGossip().say(transformMessage(message()));
       
       return !targetGossip().continueSpreading();
     }

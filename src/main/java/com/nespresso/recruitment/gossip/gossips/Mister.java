@@ -47,12 +47,6 @@ public class Mister extends Gossip
   }
 
   @Override
-  final Gossip targetGossip()
-  {
-    return super.targetGossip();
-  }
-
-  @Override
   final boolean alwaysListening()
   {
     return super.alwaysListening();

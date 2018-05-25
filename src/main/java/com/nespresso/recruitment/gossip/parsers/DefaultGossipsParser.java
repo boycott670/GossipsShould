@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import com.nespresso.recruitment.gossip.gossips.Agent;
 import com.nespresso.recruitment.gossip.gossips.Doctor;
+import com.nespresso.recruitment.gossip.gossips.Gentlemen;
 import com.nespresso.recruitment.gossip.gossips.Gossip;
 import com.nespresso.recruitment.gossip.gossips.Lady;
 import com.nespresso.recruitment.gossip.gossips.Mister;
@@ -27,6 +28,7 @@ public final class DefaultGossipsParser implements GossipsParser
       put("Agent", Agent::new);
       put("Pr", Professor::new);
       put("Lady", Lady::new);
+      put("Sir", Gentlemen::new);
     }
   };
   
