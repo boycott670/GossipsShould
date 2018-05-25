@@ -57,4 +57,10 @@ public class Doctor extends Gossip
     currentMesesageToSayIndex = 0;
   }
 
+  @Override
+  public final boolean isTargetAlwaysListening()
+  {
+    return super.isTargetAlwaysListening();
+  }
+
 }

@@ -58,7 +58,7 @@ public abstract class Gossip
   
   public abstract String ask();
   
-  public final boolean isTargetAlwaysListening()
+  public boolean isTargetAlwaysListening()
   {
     return targetGossip().alwaysListening();
   }

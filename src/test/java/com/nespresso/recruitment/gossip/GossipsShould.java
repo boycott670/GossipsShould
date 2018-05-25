@@ -173,4 +173,48 @@ public class GossipsShould
     assertThat(gossips.ask("Pink")).isEqualTo("");
     assertThat(gossips.ask("Blue")).isEqualTo("Hello");
   }
+
+  @Test
+  public void bePropagatedByALadyWhenComingFromADoctor()
+  {
+
+    Gossips gossips = new Gossips("Dr Black", "Lady Green", "Agent Pink").from("Black")
+        .to("Green")
+        .from("Green")
+        .to("Pink");
+
+    gossips.say("Secret")
+        .to("Black");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Green")).isEqualTo("Secret");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("Secret");
+
+  }
+
+  @Test
+  public void notBePropagatedByALadyWhenComingAMister()
+  {
+
+    Gossips gossips = new Gossips("Mr White", "Lady Green", "Agent Pink").from("White")
+        .to("Green")
+        .from("Green")
+        .to("Pink");
+
+    gossips.say("Hello")
+        .to("White");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Green")).isEqualTo("Hello");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("");
+
+  }
 }
