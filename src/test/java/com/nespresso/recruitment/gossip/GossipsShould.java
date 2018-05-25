@@ -145,4 +145,32 @@ public class GossipsShould
     assertThat(gossips.ask("Pink")).isEqualTo("");
     assertThat(gossips.ask("Blue")).isEqualTo("");
   }
+
+  @Test
+  public void beDelayedOneTurnByAProfessor()
+  {
+
+    Gossips gossips = new Gossips("Mr White", "Pr Pink", "Mr Blue").from("White")
+        .to("Pink")
+        .from("Pink")
+        .to("Blue");
+
+    gossips.say("Hello")
+        .to("White");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("Hello");
+    assertThat(gossips.ask("Blue")).isEqualTo("");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("Hello");
+    assertThat(gossips.ask("Blue")).isEqualTo("");
+
+    gossips.spread();
+
+    assertThat(gossips.ask("Pink")).isEqualTo("");
+    assertThat(gossips.ask("Blue")).isEqualTo("Hello");
+  }
 }

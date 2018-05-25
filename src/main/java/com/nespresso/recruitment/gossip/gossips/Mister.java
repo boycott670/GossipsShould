@@ -2,7 +2,7 @@ package com.nespresso.recruitment.gossip.gossips;
 
 import java.util.Optional;
 
-public final class Mister extends Gossip
+public class Mister extends Gossip
 {
   
   private String message;
@@ -19,7 +19,7 @@ public final class Mister extends Gossip
   }
 
   @Override
-  String message()
+  final String message()
   {
     final String message = this.message;
     
@@ -35,15 +35,33 @@ public final class Mister extends Gossip
   }
 
   @Override
-  public String ask()
+  public final String ask()
   {
     return Optional.ofNullable(message).orElse("");
   }
 
   @Override
-  void reset()
+  final void reset()
   {
     message = null;
+  }
+
+  @Override
+  final Gossip targetGossip()
+  {
+    return super.targetGossip();
+  }
+
+  @Override
+  final boolean alwaysListening()
+  {
+    return super.alwaysListening();
+  }
+
+  @Override
+  final boolean continueSpreading()
+  {
+    return super.continueSpreading();
   }
   
 }
